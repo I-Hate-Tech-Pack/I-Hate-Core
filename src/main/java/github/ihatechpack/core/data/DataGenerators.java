@@ -25,13 +25,16 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        // 方块标签（需要先生成）
+        // common item moderl
+        generator.addProvider(event.includeClient(),new ItemModelGenerator(output,existingFileHelper));
+
+        // block tag first
         BlockTagsProvider blockTagsProvider = new BlockTagGenerator(
                 output, lookupProvider, existingFileHelper
         );
         generator.addProvider(event.includeServer(), blockTagsProvider);
 
-        // 物品标签
+        // item tag first
         generator.addProvider(event.includeServer(), new ItemTagGenerator(
                 output,
                 lookupProvider,

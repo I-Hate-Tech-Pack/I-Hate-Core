@@ -1,6 +1,7 @@
 package github.ihatechpack.core;
 
 import github.ihatechpack.core.common.registry.ModItems;
+import github.ihatechpack.core.common.registry.ModTabs;
 import github.ihatechpack.core.data.DataGenerators;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -20,7 +21,9 @@ public class IHateCore {
 
         // register Items
         ModItems.register(modBus);
-
+        // register Tabs
+        ModTabs.REGISTER.register(modBus);
+        // data generator
         modBus.addListener(DataGenerators::gatherData);
     }
 
