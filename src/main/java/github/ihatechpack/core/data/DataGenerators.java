@@ -1,11 +1,10 @@
 package github.ihatechpack.core.data;
 
-import github.ihatechpack.core.IHateCore;
+import github.ihatechpack.core.data.recipe.CookingProvider;
+import github.ihatechpack.core.data.worldgen.ModWorldGenProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -25,8 +24,10 @@ public class DataGenerators {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        // common item moderl
-        generator.addProvider(event.includeClient(),new ItemModelGenerator(output,existingFileHelper));
+        // common block model
+        generator.addProvider(event.includeClient(), new BlockStateGenerator(output, existingFileHelper));
+        // common item model
+        generator.addProvider(event.includeClient(), new ItemModelGenerator(output, existingFileHelper));
 
         // block tag first
         BlockTagsProvider blockTagsProvider = new BlockTagGenerator(
@@ -40,5 +41,12 @@ public class DataGenerators {
                 lookupProvider,
                 blockTagsProvider.contentsGetter()
         ));
+
+        // loot table
+        generator.addProvider(event.includeServer(), new LootTableGenerator(output, lookupProvider));
+        // world generation
+        generator.addProvider(event.includeServer(), new ModWorldGenProvider(output, lookupProvider));
+        // recipe
+        generator.addProvider(event.includeServer(), new CookingProvider(output, lookupProvider));
     }
 }

@@ -3,6 +3,7 @@ package github.ihatechpack.core.data;
 import github.ihatechpack.core.IHateCore;
 import github.ihatechpack.core.common.registry.ModItems;
 import net.minecraft.data.PackOutput;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -18,6 +19,7 @@ public class ItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        // do not gen models for block items
         ModItems.DEFAULT_ITEMS.forEach(item->{
             basicItem(item.get());
         });

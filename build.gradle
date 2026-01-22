@@ -123,13 +123,17 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     runtimeOnly "curse.maven:sodium-394468:6382651"
     runtimeOnly "curse.maven:mekanism-268560:7132168"
-    runtimeOnly "curse.maven:applied-energistics-2-223794:7027323"
+    // runtimeOnly "curse.maven:applied-energistics-2-223794:7027323"
     runtimeOnly "curse.maven:pipez-443900:5609056"
     // runtimeOnly "curse.maven:modern-ui-352491:6956436"
     runtimeOnly "curse.maven:jade-324717:7428884"
     runtimeOnly "curse.maven:jei-238222:7391682"
-    runtimeOnly "curse.maven:create-328085:7408951"
-    runtimeOnly "curse.maven:guideme-1173950:7127444"
+    // runtimeOnly "curse.maven:create-328085:7408951"
+    // runtimeOnly "curse.maven:guideme-1173950:7127444"
+    runtimeOnly "curse.maven:ctm-267602:5587515"
+    // runtimeOnly "curse.maven:neocontinuity-1377279:7178602"
+    runtimeOnly "curse.maven:jei-integration-reborn-1291136:7078944"
+    runtimeOnly "curse.maven:kotlin-for-forge-351264:7471280"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
